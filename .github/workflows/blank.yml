@@ -6,6 +6,8 @@ jobs:
         steps:
             - name: Get code
               uses: actions/checkout@v4
+            - name: Install NodeJS
+              uses: actions/setup-node@v6  
             - name: Install dependency
               run: npm ci
             - name: Run tests
