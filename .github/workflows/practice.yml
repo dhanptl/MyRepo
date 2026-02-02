@@ -13,7 +13,7 @@ jobs:
         - name: install dependency
           run: npm ci
         - name: run test
-          run: npm testgit 
+          run: npm test
 
 
           
