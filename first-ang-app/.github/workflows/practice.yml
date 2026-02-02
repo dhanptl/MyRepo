@@ -1,0 +1,21 @@
+name: Test project
+on: push
+jobs: 
+  test:
+    runs-on: ubuntu-latest
+    steps:
+        - name: get the code
+          uses: actions/checkout@v5
+        - name: install node
+          uses: actions/setup-node@v6
+          with:
+            node-version: 24
+        - name: install dependency
+          run: npm ci
+        - name: run test
+          run: npm testgit 
+
+
+          
+
+
