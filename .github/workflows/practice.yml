@@ -1,5 +1,5 @@
-name: Test project
-on: push
+name: Deploy project
+on: [push,workflow_dispatch]
 jobs: 
   test:
     runs-on: ubuntu-latest
@@ -14,7 +14,8 @@ jobs:
           run: npm ci
         - name: run test
           run: npm test
-  deploy:
+
+  build:
     needs: test #wait until job test is successed
     runs-on: ubuntu-latest
     steps:
@@ -28,6 +29,15 @@ jobs:
           run: npm ci
         - name: Build project
           run: npm run build
+        - name: upload artifacts
+          uses: actions/upload-artifact@v4
+          with: 
+            name: dist-files #give the name of artifect
+            path: dist #what files to save 
+  Deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
         - name: Deploy
           run: echo "deploying..."
 
