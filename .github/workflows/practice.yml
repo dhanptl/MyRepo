@@ -33,7 +33,7 @@ jobs:
           uses: actions/upload-artifact@v4
           with: 
             name: dist-files #give the name of artifect
-            path: dist #what files to save 
+            path: dist #which files/folders to save as artifacts
   Deploy:
     needs: build
     runs-on: ubuntu-latest
